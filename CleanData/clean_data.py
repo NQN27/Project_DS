@@ -3,9 +3,9 @@ import csv
 def removeContentError(text): 
     text = str(text)
     text = text.lower()
-    text = re.sub(r'[^\w\s]', ' ', text) 
+    text = re.sub(r'[^\w\s\+\-/:.,=%]', ' ', text)
     text = re.sub(r'\s+', ' ', text.strip())
-    text = re.sub(r'\S+ đã viết', '!', text)
+    text = re.sub(r'\S+ đã viết:', '!', text)
     pattern = r'(gộp bài viết \S+ \S+ \S+ bài cũ \S+ \S+ \S+)'
     text = re.sub(pattern, '!', text) 
     text = re.sub(r'xem tất cả', ' !', text) 
