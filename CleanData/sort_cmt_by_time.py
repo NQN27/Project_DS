@@ -8,6 +8,9 @@ file_paths = glob.glob('E:/Project DS/CleanData/Data_DS_Clean/*.csv')
 dfs = [pd.read_csv(file) for file in file_paths]
 merged_df = pd.concat(dfs)
 
+# Xóa những dòng có giá trị NaN trong cột "content"
+merged_df.dropna(subset=['content'], inplace=True)
+
 # Chuyển cột "date" sang định dạng datetime
 merged_df['date'] = pd.to_datetime(merged_df['date'], format='%Y-%m-%d %H:%M:%S')
 
